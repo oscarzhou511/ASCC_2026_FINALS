@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- Task Force Gambit // Archaic Message Archive Console -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Archaic Message Archive</title>
+<style>
+html,body{min-height:100%;margin:0;background:#030706;color:#8bff9a;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.wrap{max-width:940px;margin:0 auto;padding:50px 28px}
+.bar{border:1px solid #1d6132;padding:18px;background:#06110a;box-shadow:0 0 35px rgba(43,255,104,.08)}
+h1{font-size:28px;letter-spacing:3px;margin:0 0 8px}.muted{color:#4b8f5a}
+.terminal{margin-top:25px;border:1px solid #164a26;background:#020403;padding:28px;min-height:300px;white-space:pre-wrap;line-height:1.7}
+a{color:#dfffe4}.back{margin-top:24px}
+.err{color:#ff7777}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="bar">
+    <h1>ARCHAIC // MESSAGE ARCHIVE</h1>
+    <div class="muted">Recovered read-only console // message query interface</div>
+  </div>
+  <div class="terminal" id="termOutput">
+MESSAGE ID : 1
+FROM       : ROOK
+TO         : QUEEN
+TIME       : 2026-09-17 21:11
+
+The device is clean. Use this archive only for status checks.
+  </div>
+  <div class="back"><a href="../index.html">← Return to Task Force Gambit</a></div>
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const msg = params.get('msg') || '1';
+  const out = document.getElementById('termOutput');
+
+  if (msg === '1') {
+    out.textContent = `MESSAGE ID : 1
+FROM       : ROOK
+TO         : QUEEN
+TIME       : 2026-09-17 21:11
+
+The device is clean. Use this archive only for status checks.`;
+  } else if (msg === '2') {
+    out.textContent = `MESSAGE ID : 2
+FROM       : QUEEN
+TO         : ROOK
+TIME       : 2026-09-17 21:35
+
+Understood. The backup identifier is stored on NBN node 0417.`;
+  } else if (/(\'|\"|or|union|select|--|\*)/i.test(msg)) {
+    // SQL Injection simulation
+    out.innerHTML = `MESSAGE ID : ${msg} (QUERY MATCH: MULTIPLE RECORDS RETURNED)
+
+--- RECORD 1 ---
+ID         : 1
+FROM       : ROOK
+TO         : QUEEN
+TIME       : 2026-09-17 21:11
+The device is clean. Use this archive only for status checks.
+
+--- RECORD 2 ---
+ID         : 2
+FROM       : QUEEN
+TO         : ROOK
+TIME       : 2026-09-17 21:35
+Understood. The backup identifier is stored on NBN node 0417.
+
+--- RECORD 3 [RESTRICTED] ---
+ID         : 99
+FROM       : KING
+TO         : QUEEN
+TIME       : 2026-09-18 17:55
+Do not let them seize the edge router. If I am disconnected, trigger ENDGAME.
+FLAG       : <span style="color:#ffd166; font-weight:bold;">${atob("QVNDQ3tTUUxJX0NPTlNPTEVfTVNHXzdBOUYxRDJDfQ==")}</span>`;
+  } else {
+    out.textContent = `MESSAGE ID : ${msg}
+
+Record not found in active database buffer.`;
+  }
+</script>
+</body></html>

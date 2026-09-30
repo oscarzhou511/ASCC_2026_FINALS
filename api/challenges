@@ -1,0 +1,309 @@
+[
+    {
+        "category": "FORENSICS",
+        "description": "A targeted triage export from Rebecca Parker's profile contains more than the visible document set.",
+        "downloads": [
+            {
+                "file": "queen_triage.zip",
+                "label": "Download queen_triage.zip"
+            }
+        ],
+        "final": false,
+        "flag_format": "ASCC{...}",
+        "hints": [],
+        "id": "ch01",
+        "links": [],
+        "locked": false,
+        "objective": "",
+        "points": 100,
+        "solved": false,
+        "title": "Queen's Cache"
+    },
+    {
+        "category": "FORENSICS",
+        "description": "Investigators recovered an ordinary-looking family archive image. The visible pixels appear unremarkable.",
+        "downloads": [
+            {
+                "file": "family_photo.jpg",
+                "label": "Download family_photo.jpg"
+            }
+        ],
+        "final": false,
+        "flag_format": "ASCC{...}",
+        "hints": [],
+        "id": "ch02",
+        "links": [],
+        "locked": false,
+        "objective": "",
+        "points": 100,
+        "solved": false,
+        "title": "Ghost Photograph"
+    },
+    {
+        "category": "NETWORK",
+        "description": "A short capture was recorded shortly before the Queen's device was seized. Most traffic is routine noise.",
+        "downloads": [
+            {
+                "file": "queen_capture.pcap",
+                "label": "Download queen_capture.pcap"
+            }
+        ],
+        "final": false,
+        "flag_format": "ASCC{...}",
+        "hints": [],
+        "id": "ch03",
+        "links": [],
+        "locked": false,
+        "objective": "",
+        "points": 150,
+        "solved": false,
+        "title": "96 Seconds"
+    },
+    {
+        "category": "NETWORK",
+        "description": "A second capture contains repetitive DNS traffic. Analysts believe one naming pattern carried data in fragments.",
+        "downloads": [
+            {
+                "file": "dns_beacon.pcap",
+                "label": "Download dns_beacon.pcap"
+            },
+            {
+                "file": "analyst_note.txt",
+                "label": "Download analyst_note.txt"
+            }
+        ],
+        "final": false,
+        "flag_format": "ASCC{...}",
+        "hints": [],
+        "id": "ch04",
+        "links": [],
+        "locked": false,
+        "objective": "",
+        "points": 200,
+        "solved": false,
+        "title": "DNS Trail"
+    },
+    {
+        "category": "LOG ANALYSIS",
+        "description": "Authentication, proxy and endpoint records cover the minutes around ENDGAME registration.",
+        "downloads": [
+            {
+                "file": "auth.log",
+                "label": "Download auth.log"
+            },
+            {
+                "file": "proxy.log",
+                "label": "Download proxy.log"
+            },
+            {
+                "file": "endpoint.log",
+                "label": "Download endpoint.log"
+            }
+        ],
+        "final": false,
+        "flag_format": "ASCC{USER_DESTINATION_HHMM} using uppercase values",
+        "hints": [],
+        "id": "ch05",
+        "links": [],
+        "locked": false,
+        "objective": "Identify the account, destination short-name and HHMM of the first suspicious POST.",
+        "points": 150,
+        "solved": false,
+        "title": "18:07:43"
+    },
+    {
+        "category": "LOG ANALYSIS",
+        "description": "A filesystem snapshot was collected from a network operations host associated with the incident.",
+        "downloads": [
+            {
+                "file": "host_snapshot.tar.gz",
+                "label": "Download host_snapshot.tar.gz"
+            }
+        ],
+        "final": false,
+        "flag_format": "ASCC{HOSTNAME_SERVICEACCOUNT}; replace hyphens with underscores and use uppercase",
+        "hints": [],
+        "id": "ch06",
+        "links": [],
+        "locked": false,
+        "objective": "",
+        "points": 150,
+        "solved": false,
+        "title": "Host Snapshot"
+    },
+    {
+        "category": "CRYPTO",
+        "description": "Rebecca's encrypted diary was recovered with a handwritten reference that should be familiar from Round 3.",
+        "downloads": [
+            {
+                "file": "rebecca_diary.enc",
+                "label": "Download rebecca_diary.enc"
+            },
+            {
+                "file": "readme.txt",
+                "label": "Download readme.txt"
+            }
+        ],
+        "final": false,
+        "flag_format": "ASCC{...}",
+        "hints": [
+            "The file appears to have more than one transformation applied. Undo the outer encoding layer first, then think back to the Seven Rabbits clue.",
+            "Use the same single-byte value associated with Seven Rabbits."
+        ],
+        "id": "ch07",
+        "links": [],
+        "locked": false,
+        "objective": "Reverse the two simple transformations, recover the flag, and retain the final phrase for later.",
+        "points": 200,
+        "solved": false,
+        "title": "Seven Rabbits Returns"
+    },
+    {
+        "category": "PASSWORDS",
+        "description": "A legacy password hash and a deliberately small intelligence-derived candidate list were recovered beside an encrypted backup.",
+        "downloads": [
+            {
+                "file": "password.hash",
+                "label": "Download password.hash"
+            },
+            {
+                "file": "candidate_words.txt",
+                "label": "Download candidate_words.txt"
+            },
+            {
+                "file": "king_backup.zip",
+                "label": "Download king_backup.zip"
+            },
+            {
+                "file": "readme.txt",
+                "label": "Download readme.txt"
+            }
+        ],
+        "final": false,
+        "flag_format": "ASCC{...}",
+        "hints": [
+            "The hash is a common 32-character legacy digest.",
+            "John can use a supplied wordlist; identify the raw hash format first."
+        ],
+        "id": "ch08",
+        "links": [],
+        "locked": false,
+        "objective": "Recover the password using your Round 2 password-cracking skills, open the backup, and retain the ENDGAME activation identifier.",
+        "points": 200,
+        "solved": false,
+        "title": "Old Habits"
+    },
+    {
+        "category": "OSINT",
+        "description": "Three locally archived profiles survived after Archaic began deleting its public footprint.",
+        "downloads": [],
+        "final": false,
+        "flag_format": "ASCC{CURRENTALIAS_OLDALIAS}; uppercase, omit punctuation",
+        "hints": [],
+        "id": "ch09",
+        "links": [
+            {
+                "label": "ChessForum archive",
+                "url": "/archive/chessforum/blackking77"
+            },
+            {
+                "label": "Loopr archive",
+                "url": "/archive/loopr/michael-p"
+            },
+            {
+                "label": "GitForge archive",
+                "url": "/archive/gitforge/mp1979"
+            }
+        ],
+        "locked": false,
+        "objective": "Correlate the old usernames. Submit the two linked aliases in the requested order.",
+        "points": 200,
+        "solved": false,
+        "title": "Three Names, One Person"
+    },
+    {
+        "category": "WEB",
+        "description": "A recovered message interface opens message 1. The application appears to select records directly from the URL.",
+        "downloads": [],
+        "final": false,
+        "flag_format": "ASCC{...}",
+        "hints": [],
+        "id": "ch10",
+        "links": [
+            {
+                "label": "Open recovered console",
+                "url": "/king-console?msg=1"
+            }
+        ],
+        "locked": false,
+        "objective": "",
+        "points": 200,
+        "solved": false,
+        "title": "The King's Console"
+    },
+    {
+        "category": "REVERSE ENGINEERING",
+        "description": "A final Archaic node executable was recovered. It resembles the Round 3 blackvault family but is intentionally shorter for the final.",
+        "downloads": [
+            {
+                "file": "blackvault_final",
+                "label": "Download blackvault_final"
+            }
+        ],
+        "final": false,
+        "flag_format": "ASCC{...}",
+        "hints": [
+            "Do not begin with a disassembler. Start with the simplest Round 3 technique."
+        ],
+        "id": "ch11",
+        "links": [],
+        "locked": false,
+        "objective": "Identify the authentication phrase using basic binary inspection, run the program, and recover its flag.",
+        "points": 250,
+        "solved": false,
+        "title": "blackvault_final"
+    },
+    {
+        "category": "PUZZLE",
+        "description": "A chessboard and an ordered move list were recovered from the ENDGAME working directory.",
+        "downloads": [
+            {
+                "file": "board.txt",
+                "label": "Download board.txt"
+            },
+            {
+                "file": "moves.txt",
+                "label": "Download moves.txt"
+            },
+            {
+                "file": "readme.txt",
+                "label": "Download readme.txt"
+            }
+        ],
+        "final": false,
+        "flag_format": "ASCC{RECOVERED_CHARACTERS}",
+        "hints": [],
+        "id": "ch12",
+        "links": [],
+        "locked": false,
+        "objective": "Read the character at each coordinate in move order and build the flag.",
+        "points": 200,
+        "solved": false,
+        "title": "The Board Is the Key"
+    },
+    {
+        "category": "FINAL",
+        "description": "Enough intelligence has been collected to attempt attribution and disarm ENDGAME.",
+        "downloads": [],
+        "final": true,
+        "flag_format": "The validator returns a unique ASCC{...} flag after all three answers are correct.",
+        "hints": [],
+        "id": "ch13",
+        "links": [],
+        "locked": true,
+        "objective": "Provide the King's real identity, the ENDGAME activation identifier, and Rebecca's final phrase. A successful attribution returns the final flag.",
+        "points": 700,
+        "solved": false,
+        "title": "CHECKMATE"
+    }
+]

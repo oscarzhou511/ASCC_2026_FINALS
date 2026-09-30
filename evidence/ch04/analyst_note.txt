@@ -1,0 +1,2 @@
+Analyst note: suspicious DNS labels appear to contain ordered hexadecimal data.
+Sequence numbers begin at 01. Ignore normal.internal queries.

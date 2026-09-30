@@ -1,0 +1,11 @@
+    a b c d e f g h
+  +-----------------+
+8 | F E I Q 1 8 X 2 |
+7 | 1 I Z F P B I J |
+6 | R A I 4 H I 2 B |
+5 | 7 8 E 2 V 6 0 7 |
+4 | B H N 1 6 5 1 V |
+3 | 9 I E _ 2 D C E |
+2 | V Q H B _ C Z O |
+1 | R W 5 _ L P R Q |
+  +-----------------+

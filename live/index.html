@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Task Force Gambit // LIVE SCOREBOARD</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="../static/style.css">
+  <style>
+    .live-wrap { max-width: 960px; margin: 40px auto; padding: 0 24px; }
+    .live-header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--border-subtle); padding-bottom: 20px; margin-bottom: 28px; }
+    .scores-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+    .scores-table th { text-align: left; padding: 12px 16px; font-size: 11px; letter-spacing: 2px; color: var(--text-muted); border-bottom: 1px solid var(--border-subtle); }
+    .scores-table td { padding: 16px; border-bottom: 1px solid #131d2b; font-size: 14px; }
+    .scores-table tr:hover { background: rgba(56, 189, 248, 0.04); }
+    .rank-cell { font-weight: 800; color: var(--accent-gold); width: 80px; }
+    .name-cell { font-weight: 700; color: #fff; }
+    .score-cell { text-align: right; color: var(--accent-green); font-weight: 800; }
+    .solves-cell { text-align: right; color: var(--accent-blue); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="scanlines"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="eyebrow">AUSTRALIAN CYBER SECURITY CHALLENGE 2026</div>
+      <div class="title">TASK FORCE <span>GAMBIT</span> // LIVE</div>
+      <div class="subtitle">PUBLIC LEADERBOARD BROADCAST</div>
+    </div>
+    <div class="eventbox">
+      <div class="eventlabel">MISSION CLOCK</div>
+      <div id="timer" class="timer">03:00:00</div>
+      <div id="eventStatus" class="status">OPERATION ACTIVE</div>
+    </div>
+  </header>
+
+  <div class="live-wrap">
+    <div class="live-header">
+      <div>
+        <h1 style="margin:0 0 6px; letter-spacing:1.5px; font-size:26px;">LIVE STANDINGS</h1>
+        <div style="color:var(--text-muted); font-size:13px;">Real-time team points & solve distribution</div>
+      </div>
+      <div>
+        <a href="/" style="color:var(--accent-blue); text-decoration:none; font-size:12px; font-weight:700;">← RETURN TO CONSOLE</a>
+      </div>
+    </div>
+
+    <div id="scoreboard">
+      <table class="scores-table">
+        <thead>
+          <tr>
+            <th>RANK</th>
+            <th>TEAM</th>
+            <th style="text-align:right;">SOLVED</th>
+            <th style="text-align:right;">SCORE</th>
+          </tr>
+        </thead>
+        <tbody id="scoresBody">
+          <!-- Dynamically populated -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer>
+    TASK FORCE GAMBIT // CLASSIFIED BROADCAST // ASCC 2026
+  </footer>
+
+  <script>
+    async function updateLive() {
+      try {
+        let teams = await fetch('/api/scoreboard').then(r=>r.json()).catch(()=>[]);
+        if (!teams.length) {
+          teams = await fetch('../api/scoreboard.json').then(r=>r.json()).catch(()=>[]);
+        }
+        let tbody = document.getElementById('scoresBody');
+        tbody.innerHTML = teams.map(t => `
+          <tr>
+            <td class="rank-cell">#${t.rank}</td>
+            <td class="name-cell">${t.name}</td>
+            <td class="solves-cell">${t.solves} solves</td>
+            <td class="score-cell">${t.points} PTS</td>
+          </tr>
+        `).join('');
+      } catch(e) {}
+    }
+    updateLive();
+    setInterval(updateLive, 5000);
+
+    async function updateClock() {
+      try {
+        let s = await fetch('/api/event').then(r=>r.json()).catch(()=>({}));
+        let remain = Math.max(0, (s.ends_at || (s.now + 10800)) - (s.now || Math.floor(Date.now()/1000)));
+        let h = Math.floor(remain / 3600), m = Math.floor(remain % 3600 / 60), sec = remain % 60;
+        document.getElementById('timer').textContent = [h, m, sec].map(x => String(x).padStart(2, '0')).join(':');
+      } catch(e) {}
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Task Force Gambit // CHECKMATE</title>
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+  <div class="scanlines"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="eyebrow">AUSTRALIAN CYBER SECURITY CHALLENGE 2026</div>
+      <div class="title">TASK FORCE <span>GAMBIT</span></div>
+      <div class="subtitle">ROUND 4 // CHECKMATE</div>
+    </div>
+    <div class="eventbox">
+      <div class="eventlabel">MISSION CLOCK</div>
+      <div id="timer" class="timer">03:00:00</div>
+      <div id="eventStatus" class="status">AWAITING AUTHORISATION</div>
+    </div>
+  </header>
+
+  <section class="brief">
+    <div class="brief-mark">♚</div>
+    <div>
+      <h1>ONE MEMBER REMAINS.</h1>
+      <p>The Queen is in custody. Evidence recovered from her devices suggests the final Archaic operator has activated <b>ENDGAME</b>. Investigate the evidence, collect flags, identify the King and stop the final move.</p>
+    </div>
+  </section>
+
+  <section class="controls">
+    <div id="teamPanel" class="team-panel">
+      <button class="primary" onclick="openAuth('register')">REGISTER TEAM</button>
+      <button class="ghost" onclick="openAuth('login')">LOGIN</button>
+    </div>
+    <div class="filters" id="filters"></div>
+  </section>
+
+  <main>
+    <div id="challengeGrid" class="challenge-grid"></div>
+  </main>
+
+  <!-- STUDENT SCOREBOARD DISABLED: public rankings are shown only on /live/ -->
+
+  <div id="modal" class="modal hidden" onclick="backdropClose(event)">
+    <div id="modalCard" class="modal-card"></div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <footer>
+    TASK FORCE GAMBIT // CLASSIFIED TRAINING ENVIRONMENT // ASCC 2026
+  </footer>
+
+  <script src="static/app.js"></script>
+</body>
+</html>

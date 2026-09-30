@@ -1,0 +1,7 @@
+[
+  { "rank": 1, "name": "Team Gambit", "points": 2800, "solves": 13 },
+  { "rank": 2, "name": "NullSec", "points": 2100, "solves": 10 },
+  { "rank": 3, "name": "ByteBandits", "points": 1850, "solves": 9 },
+  { "rank": 4, "name": "CipherSquad", "points": 1400, "solves": 7 },
+  { "rank": 5, "name": "KernelPanics", "points": 1150, "solves": 6 }
+]
